@@ -41,6 +41,8 @@
   },
   "devDependencies": {
     "@types/node": "^18.15.7",
-    "file-loader": "^6.2.0"
+    "@types/node-sass": "^4.11.3",
+    "file-loader": "^6.2.0",
+    "node-sass": "^7.0.3"
   }
 }
