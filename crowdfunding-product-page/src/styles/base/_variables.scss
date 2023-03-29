@@ -4,5 +4,9 @@ $primary-color-active:  hsl(176, 72%, 28%);
 
 $secondary-color:  hsl(0, 0%, 0%);
 $secondary-color-active: hsl(0, 0%, 48%); 
-// breakpoints
-// box sizing 
+
+// breakpoints 
+$bp-sm: 375;
+$bp-md: 768;
+$bp-lg: 992;
+$bp-xl: 1440;
