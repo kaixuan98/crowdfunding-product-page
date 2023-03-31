@@ -1,18 +1,29 @@
-import React from 'react';
+import React, {useState} from 'react';
+import './App.scss';
 import Navbar from './components/Navbar';
 
 
 
+
 function App() {
+  const [isMenuActive, setMenuActive] = useState<boolean>(false); 
+
+
   return (
     <div className="App">
+      {
+        isMenuActive? (<div className="overlay"></div>): (null)
+      }
+      
 
       <header>
-        <img src={require('./assets/image-hero-desktop.jpg')} alt="Monitor Riser"></img>
-        <Navbar/>
+        <Navbar isActive={isMenuActive} setToggle={setMenuActive}/>
+        <div className="img-shadow">
+          <img src={require('./assets/image-hero-desktop.jpg')} alt="Monitor Riser"></img>
+        </div>
       </header>
 
-      <main>
+      {/* <main>
         <section>
           <h1>Mastercraft Bamboo Monitor Riser</h1>
           <p>A beautiful & handcrafted monitor stand to reduce neck and eye strain.</p>
@@ -97,7 +108,7 @@ function App() {
           </section>
 
         </section>
-      </main>
+      </main> */}
 
     </div>
   );

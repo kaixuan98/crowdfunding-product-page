@@ -1,0 +1,64 @@
+header{
+    // wrapper to make the image stick to the top all the times
+    .img-shadow{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width:100%;
+        z-index: -1;
+    }
+
+    .img-shadow::after {
+        box-shadow: inset 0 0 30px 5px #000;
+        bottom: 0;
+        content: "";
+        display: block;
+        left: 0;
+        height: 100%;
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: 100%;
+    }
+
+    img{
+        max-width: 100%;
+        max-height: 100%;
+    }
+}
+
+nav{
+    ul{
+        padding: 0;
+        margin-bottom: $space-unit;
+    }
+    li{
+        text-align: center;
+    }
+}
+
+
+.nav__link{
+    list-style: none;
+    color: white; 
+}
+
+// smaller than 768 then this will show 
+
+
+.smallMenu{
+    background-color: white;
+    border-radius: $border-radius;
+
+    .nav__link--black{
+        text-align: left;
+        color: $secondary-color;
+        list-style: none;
+        padding: $space-unit ;
+        border-bottom: 0.1px solid grey;
+    }
+
+    .nav__link--black:last-child{
+        border-bottom: none;
+    }
+}

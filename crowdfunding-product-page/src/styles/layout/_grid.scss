@@ -1,29 +1,5 @@
 // The code are from this tutorial: https://www.toptal.com/sass/css3-flexbox-sass-grid-tutorial by Juan Varela
 
-$grid_cols : 12; 
-
-// (modifier, breakpoint values)
-$map-grid-props: (
-    ''      : 0,
-    '-sm'   : $bp-small,
-    '-md'   : $bp-md,
-    '-lg'   : $bp-lg,
-    '-xl'   : $bp-xl,
-);
-
-// mixin will be used to create the media query 
-// min-width: if device width is greater or equal to [breakpoint value], the do the @content
-// think of a threshold (minimum width that need to get pass, maximum width that cannot go above it)
-@mixin create-mq($breakpoint, $min-or-max){
-    @if($breakpoint == 0){
-        @content;
-    }@else {
-        @media screen and (#{$min-or-max}-width: $breakpoint *1px) {
-            @content;
-        }
-    }
-}
-
 // used to create column of classes
 // $modifer: -sm, -md, -lg, -xl
 // $breakpoints: are the values
