@@ -1,0 +1,63 @@
+// The code are from this tutorial: https://www.toptal.com/sass/css3-flexbox-sass-grid-tutorial by Juan Varela
+
+// used to create column of classes
+// $modifer: -sm, -md, -lg, -xl
+// $breakpoints: are the values
+@mixin create-col-classes($modifier, $grid-cols, $breakpoint){
+    // create media query based on the breakpoint with min width (anything greater than breakpoint)
+    @include create-mq($breakpoint, 'min'){
+
+        &__col#{$modifier}-offset-0{ // __col-sm/md/lg/xl-offset-0
+            margin-left : 0;
+        }
+
+        @for $i from 1 through $grid-cols{
+            &__col#{$modifier}-#{$i} { // __col-sm/md/lg/xd-1to12
+                flex-basis : (100 / ($grid-cols / $i) ) * 1%;  // each column will flex this amount of width
+            }
+            // offset will add margin left regard to previous columns // this is to like add margin to the left if there is nothing to display
+            &__col#{$modifier}-offset-#{$i}{ // __col-sm/md/lg/xl-offset-1to12
+                margin-left : (100 / ($grid-cols / $i) ) * 1%; 
+            }
+        }
+    }
+}
+
+// looping the grid props , will get a modifier and a breakpoint as key value pairs
+@each $modifier, $breakpoint in $map-grid-props {
+    @if($modifier == ''){
+        $modifier: '-xs';
+    }
+    @include create-mq($breakpoint - 1 , 'max'){
+        .hidden#{$modifier}-down {
+            display: none !important;
+        }
+    }
+    @include create-mq($breakpoint, 'min'){
+        .hidden#{$modifier}-up{
+            display: none !important;
+        }
+    }
+}
+
+.container{
+    max-width: $bp-md * 1px; 
+    margin: 0 auto;
+    &--fluid { // container--fluid: expand to full width
+        margin: 0;
+        max-width: 100%;
+    }
+
+    &__row { //container__row (classes for each row)
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    // go throught the grid props map
+    @each $modifier, $breakpoint in $map-grid-props{
+        // use the mixin to create column classes
+        @include create-col-classes($modifier, $grid-cols, $breakpoint );
+    }
+}
+

@@ -1,0 +1,41 @@
+// the reset css is from Josh Comeau
+// https://www.joshwcomeau.com/css/custom-css-reset/
+
+*, *::before, *::after{
+    box-sizing: border-box;
+}
+
+*{
+    margin: 0;
+}
+
+// root is set because we are using react
+html, body, #root{
+    height: 100%; 
+}
+
+body{
+    line-height: 1.5;
+    // line-height: calc(1em + 0.5em)
+    -webkit-font-smoothing: 'antialiased'; 
+}
+
+img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+}
+
+input, button, textarea, select{
+    font:inherit;
+}
+
+p,h1,h2,h3,h4,h5,h6{
+    overflow-wrap: break-word ;
+    hyphens: auto;
+}
+
+// help with stacking context without needing to set z-index
+#root{
+    isolation: isolate;
+}
+
